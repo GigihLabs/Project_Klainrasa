@@ -1,0 +1,480 @@
+:root{
+    /* Warna yang lebih hangat & premium */
+    --bg:#f8f5f1; /* Latar belakang sangat lembut */
+    --accent:#6b3b00; /* Warna utama: Cokelat kopi kuat */
+    --accent-light:#905500;
+    --muted:#6b6b6b;
+    --card:#ffffff;
+    --glass: rgba(255,255,255,0.8);
+    --radius:10px;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Shadow yang lebih dalam dan lembut */
+    --maxw:1200px;
+    --container-padding:24px;
+    color-scheme: light;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  body{
+      margin:0;
+      background:var(--bg); 
+      color:#222
+    }
+  a{color:inherit;text-decoration:none}
+  
+  /* Utilities */
+  .muted{color:var(--muted)}
+  .muted-sub{max-width:700px;margin:10px auto 40px;font-size:1.1rem;color:var(--muted)}
+  .text-center{text-align:center}
+  .btn{
+      padding:10px 20px;
+      border-radius:var(--radius);
+      font-weight:600;
+      transition:background 0.3s, color 0.3s
+    }
+  .btn.primary{
+      background-color:var(--accent);
+      color:var(--card);
+    }
+  .btn.primary:hover{
+      background-color:var(--accent-light);
+    }
+  .btn.secondary{
+      background-color:transparent;
+      border:2px solid var(--accent);
+      color:var(--accent);
+    }
+  .btn.secondary:hover{
+      background-color:var(--accent);
+      color:var(--card);
+    }
+  .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      border:0
+    }
+  
+  /* layout */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:48px var(--container-padding)}
+  
+  /* navbar */
+  header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      background:var(--glass);
+      backdrop-filter:blur(8px);
+      box-shadow:0 1px 10px rgba(10,10,10,0.05)
+    }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px var(--container-padding)}
+  .brand{display:flex;align-items:center;gap:12px}
+  
+  .desktop-menu ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+  .desktop-menu a{font-weight:500;padding:8px 0;position:relative}
+  .desktop-menu a:hover::after, .desktop-menu a.active::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:2px;
+      background:var(--accent);
+      transform:scaleX(1);
+      transition:transform 0.3s
+    }
+  .desktop-menu a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:2px;
+      background:var(--accent);
+      transform:scaleX(0);
+      transition:transform 0.3s
+    }
+  .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--accent)}
+  .mobile-menu{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      width:100%;
+      background:var(--card);
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      z-index:50
+    }
+  .mobile-menu ul{list-style:none;padding:10px 24px;margin:0}
+  .mobile-menu li{border-bottom:1px solid #eee}
+  .mobile-menu li:last-child{border-bottom:none}
+  .mobile-menu a{display:block;padding:12px 0;font-weight:500}
+  
+  /* 1. HERO SECTION */
+  .hero{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding-top: 80px;
+      padding-bottom: 80px;
+  }
+  .hero-content h1{
+      font-size: 3.8rem;
+      color: var(--accent);
+      margin-top: 0;
+      line-height: 1.1;
+  }
+  .hero-image{
+      display: flex;
+      justify-content: flex-end;
+  }
+  .hero-image .main-image{
+      width: 100%;
+      max-width: 550px;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+  }
+  
+  /* 2. PRODUCTS & QUALITY FOCUS SECTION */
+  .section{padding:60px 0}
+  h2{font-size:2.5rem;color:var(--accent-light)}
+  
+  .products-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:24px;
+      margin-top:40px;
+    }
+  .product{
+      background:var(--card);
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:0 4px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--accent); 
+      display:flex;
+      flex-direction:column;
+      text-align:center;
+      transition:transform 0.3s;
+    }
+  .product:hover{transform:translateY(-5px);box-shadow:0 8px 25px rgba(0,0,0,0.1)}
+  .product img{
+      width:100%;
+      height:220px;
+      border-radius:var(--radius);
+      object-fit:cover;
+      margin-bottom:15px;
+    }
+  .product h4{margin:0 0 4px;font-size:1.2rem;color:#333}
+  .price{color:var(--accent);font-weight:700;margin-bottom:8px}
+  .muted-product{font-size:0.9rem;color:var(--muted)}
+  
+  /* 3. TESTIMONY SECTION */
+  .testimony-section{
+      background-color:#fff; 
+    }
+  .testimony-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+      margin-top:40px;
+    }
+  .testimony-card{
+      background:var(--bg);
+      padding:25px;
+      border-radius:var(--radius);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+      font-style:normal; 
+      margin:0;
+      border-left:5px solid var(--accent-light);
+    }
+  .testimony-card p{font-size:1rem;line-height:1.6;font-style:italic;} 
+  .testimony-card footer{margin-top:15px;font-style:normal;font-weight:600;color:var(--accent)}
+  
+  /* 4. ABOUT SECTION */
+  .about-content-grid{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:40px;
+      align-items:center;
+    }
+  .about-text h2{margin-top:10px}
+  .about-image img{
+      width:250px;
+      height:auto;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      
+    }
+  .about-image .caption{
+      text-align:left;
+      margin-top:10px;
+      font-size:1rem;
+    }
+    
+  /* 5. PARTNERSHIP SECTION - Styling baru untuk kemitraan dengan logo/gambar */
+  .partners-section{background:var(--card)}
+  .partners{
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:30px;
+    }
+  .partner{
+      width:220px; /* Ukuran kartu diperbesar sedikit */
+      height:auto;
+      border-radius:var(--radius);
+      background:#fff;
+      padding:15px;
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+      border:1px solid lightgray;
+      text-align: center;
+    }
+  .partner img{
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+  .partner p{
+      font-weight:600;
+      color:var(--accent);
+      margin: 0;
+      font-size: 1rem;
+    }
+  
+  
+  /* footer */
+  footer{padding:36px 0;color:var(--muted);font-size:14px;background-color:#fff}
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 1000px){
+      .desktop-menu{display:none}
+      .menu-toggle{display:block}
+      
+      .hero{grid-template-columns:1fr;text-align:center;padding-top:40px;padding-bottom:40px}
+      .hero-image{order:-1;justify-content:center;margin-bottom:30px}
+      .hero-image .main-image{max-width:80%}
+      .hero-content h1{font-size:2.8rem}
+      
+      .products-grid{grid-template-columns:repeat(2,1fr)}
+      .product{flex-direction:column;text-align:center}
+      .product img{width:100%;height:180px;margin-left:0}
+      
+      .testimony-grid{grid-template-columns:1fr}
+      
+      .about-content-grid{grid-template-columns:1fr;text-align:center}
+      .about-image{order:-1;margin-bottom:20px}
+      .about-image .caption{text-align:center}
+      
+      .partner{width: 100%;} /* Menjadi dua kolom di mobile */
+  }
+  
+  @media (max-width: 600px){
+      .products-grid{grid-template-columns:1fr}
+      .hero-content h1{font-size:2.2rem}
+      .wrap{padding:24px 16px}
+      .partner{width: 80%;} /* Menjadi satu kolom di mobile kecil */
+  }
+
+  /* Sembunyikan Checkbox */
+.menu-toggle {
+    display: none;
+}
+
+/* Pengaturan Ikon Hamburger (Garis 3) */
+.hamburger {
+    display: none; /* Sembunyikan di desktop */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--accent); /* Warna cokelat kopi Anda */
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* --- RESPONSIVE MODE (Untuk HP/Tablet) --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Munculkan garis 3 di layar kecil */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        width: 200px;
+        box-shadow: var(--shadow);
+        display: none; /* Sembunyikan menu secara default */
+        border-radius: 0 0 10px 10px;
+    }
+
+    .nav-links ul {
+        flex-direction: column; /* Menu disusun ke bawah */
+        padding: 20px;
+    }
+
+    /* LOGIKA TITIK 3 / GARIS 3: 
+       Jika checkbox dicentang, maka nav-links muncul */
+    .menu-toggle:checked ~ .nav-links {
+        display: block;
+    }
+}
+
+  /* Animasi Slide dari Kanan ke Kiri */
+@keyframes slideInLeft {
+    from {
+      transform: translateX(100px); /* Mulai dari posisi kanan */
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0); /* Kembali ke posisi semula */
+      opacity: 1;
+    }
+  }
+  
+  .main-image {
+    animation: slideInLeft 1.2s ease-out forwards;
+  }
+
+  .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+.alert-success { background: #d4edda; color: #155724; }
+.alert-danger { background: #f8d7da; color: #721c24; }
+
+/* --- Desktop: Menu Normal --- */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.menu-toggle { display: none; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 30px; height: 3px; background: var(--accent); border-radius: 5px; transition: 0.3s; }
+
+.nav-links ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+.nav-links a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* --- Mobile/Tablet: Burger Menu Aktif --- */
+@media (max-width: 992px) {
+    .hamburger { display: flex; z-index: 1001; }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Sembunyi di kanan luar layar */
+        width: 250px;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+        padding-top: 80px;
+    }
+
+    /* Pastikan class ini ada di style.css Anda */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.product img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+    }
+
+    .nav-links li { width: 100%; border-bottom: 1px solid #eee; }
+    .nav-links a { display: block; padding: 15px 25px; width: 100%; }
+
+    /* Login Item khusus agar menonjol */
+    .login-item a { background: var(--accent); color: white !important; }
+
+    /* Logika Klik: Jika Checkbox dicentang, Menu muncul */
+    .menu-toggle:checked ~ .nav-links {
+        right: 0;
+    }
+
+    /* Animasi Burger jadi X saat dibuka */
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+}
+
+/* Styling Grid Testimoni */
+.testimoni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.testi-card {
+  background: #fdfaf7;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.testi-card:hover {
+  transform: translateY(-5px);
+}
+
+.testi-card p {
+  font-style: italic;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.testi-card strong {
+  color: #6F4E37;
+  display: block;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
